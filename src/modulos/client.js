@@ -17,7 +17,7 @@ const main = (token) => {
   Client.login(token).then(() => {
     console.log("[CLIENT] - client conectado!")
   }).catch(() => {
-    console.log("[CLIENT] - erro ao tentar se conectar!")
+    console.log("[CLIENT - ERROR] - erro ao tentar se conectar!")
   })
 }
 
