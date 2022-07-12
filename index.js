@@ -4,4 +4,4 @@ const { token } = require('./src/config.json')
 const { name } = require('./package.json')
 
 console.log(`[APP] - ${name} está iniciando client e dependencias!`)
-bot(token)
+bot.main(token)

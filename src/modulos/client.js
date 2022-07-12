@@ -1,14 +1,24 @@
-module.exports = (token) => {
+const main = (token) => {
   const Discord = require('discord.js')
-  const client = new Discord.Client({ intents: [
-    Discord.Intents.FLAGS.GUILDS,
-    Discord.Intents.FLAGS.GUILD_MEMBERS,
-    Discord.Intents.FLAGS.GUILD_MESSAGES,
-    Discord.Intents.FLAGS.GUILD_PRESENCES,
-    Discord.Intents.FLAGS.GUILD_VOICE_STATES    
-  ]})
+  const Client = new Discord.Client({
+    intents: [
+      Discord.Intents.FLAGS.GUILDS,
+      Discord.Intents.FLAGS.GUILD_MEMBERS,
+      Discord.Intents.FLAGS.GUILD_MESSAGES,
+      Discord.Intents.FLAGS.GUILD_PRESENCES,
+      Discord.Intents.FLAGS.GUILD_VOICE_STATES
+    ],
+    allowedMentions: { parse: ['users','roles'], repliedUser: true}
+  })
 
-  client.login(token).then(() => {
+  module.exports.Client = Client;
+
+
+  Client.login(token).then(() => {
     console.log("[CLIENT] - client conectado!")
+  }).catch(() => {
+    console.log("[CLIENT] - erro ao tentar se conectar!")
   })
 }
+
+module.exports.main = main;
