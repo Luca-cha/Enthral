@@ -1,5 +1,6 @@
 const main = (token) => {
   const Discord = require('discord.js')
+  const commands = require('./commands')
   const Client = new Discord.Client({
     intents: [
       Discord.Intents.FLAGS.GUILDS,
@@ -11,9 +12,12 @@ const main = (token) => {
     allowedMentions: { parse: ['users','roles'], repliedUser: true}
   })
 
+  Client.commands = new Discord.Collection()
+  Client.aliases = new Discord.Collection()
   module.exports.Client = Client;
 
 
+  commands()
   Client.login(token).then(() => {
     console.log("[CLIENT] - client conectado!")
   }).catch(() => {
